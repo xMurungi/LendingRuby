@@ -1,0 +1,29 @@
+
+<h1>Library Books</h1>
+
+<%= link_to 'Add New Book', new_book_path, class: 'button' %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @books.each do |book| %>
+      <tr>
+        <td><%= book.title %></td>
+        <td><%= book.author %></td>
+        <td><%= book.status || 'Available' %></td>
+        <td>
+          <%= link_to 'View', book %>
+          <%= link_to 'Edit', edit_book_path(book) %>
+          <%= button_to 'Delete', book, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
